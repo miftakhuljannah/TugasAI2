@@ -6,7 +6,10 @@ public class Main {
 	// write your code here
         Fuzzy fuzzy = new Fuzzy();
         fuzzy.readCSV("DataTugas2.csv");
-        System.out.println(fuzzy.getMaxPendapatan() + " " + fuzzy.getMinPendapatan() + " " + fuzzy.getMaxHutang() + " " + fuzzy.getMinHutang());
+        fuzzy.fuzzyHutang();
+        fuzzy.fuzzyPendapatan();
+        fuzzy.hitungFuzzyRules();
+        fuzzy.print20Layak();
     }
 
 }
