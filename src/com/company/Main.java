@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,7 +11,12 @@ public class Main {
         fuzzy.fuzzyHutang();
         fuzzy.fuzzyPendapatan();
         fuzzy.hitungFuzzyRules();
-        fuzzy.print20Layak();
+        // fuzzy.print20Layak();
+        try {
+            fuzzy.writeToFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

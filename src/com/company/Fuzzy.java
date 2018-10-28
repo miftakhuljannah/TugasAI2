@@ -1,8 +1,6 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -176,5 +174,28 @@ public class Fuzzy {
                 return;
             }
         }
+    }
+
+    public void writeToFile() throws IOException {
+        listData.sort(Comparator.comparing(DataHutang::getFuzzy));
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        for (DataHutang data : listData) {
+            i++;
+            sb.append(data.getNomer()).append("\n");
+            if (i >= 20) {
+                break;
+            }
+        }
+        File file = new File("output.csv");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter writer = new BufferedWriter(fw);
+        writer.write(sb.toString());
+        System.out.println(sb.toString());
+        writer.flush();
+        writer.close();
     }
 }
